@@ -12,24 +12,6 @@ This system implements the One-Time Pad cipher, a theoretically unbreakable encr
 - **Decryption Server** (`dec_server`): Multi-threaded server for decrypting ciphertext
 - **Decryption Client** (`dec_client`): Client for sending ciphertext to decryption server
 
-## Architecture
-
-```
-┌─────────────┐    ┌─────────────────┐
-│ enc_client  │───▶│   enc_server    │
-│             │    │   (port 57170)  │
-└─────────────┘    └─────────────────┘
-
-┌─────────────┐    ┌─────────────────┐
-│ dec_client  │───▶│   dec_server    │
-│             │    │   (port 57171)  │
-└─────────────┘    └─────────────────┘
-
-┌─────────────┐
-│   keygen    │ (generates keys for both)
-└─────────────┘
-```
-
 ## Quick Start
 
 1. **Compile all components:**

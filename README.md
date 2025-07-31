@@ -132,15 +132,3 @@ echo "SECRET MESSAGE FOR ALICE" > message.txt
 # 6. Clean up
 rm secret.key message.txt encrypted.txt
 ```
-
-## Building and Testing
-
-Each component can be built independently:
-
-```bash
-cd keygen && gcc -o keygen keygen.c
-cd enc_server && gcc -o enc_server enc_server.c
-cd enc_client && gcc -o enc_client enc_client.c
-cd dec_server && gcc -o dec_server dec_server.c
-cd dec_client && gcc -o dec_client dec_client.c
-```

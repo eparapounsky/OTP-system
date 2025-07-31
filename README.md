@@ -120,7 +120,7 @@ All input text must contain only these characters.
 ./keygen 256 > secret.key
 
 # 2. Create plaintext
-echo "SECRET MESSAGE FOR ALICE" > message.txt
+echo "THE EAGLE FLIES AT MIDNIGHT" > message.txt
 
 # 3. Start servers
 ./enc_server 57170 &
@@ -131,7 +131,7 @@ echo "SECRET MESSAGE FOR ALICE" > message.txt
 
 # 5. Decrypt
 ./dec_client encrypted.txt secret.key 57171
-# Output: SECRET MESSAGE FOR ALICE
+# Output: THE EAGLE FLIES AT MIDNIGHT
 
 # 6. Clean up
 rm secret.key message.txt encrypted.txt

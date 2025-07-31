@@ -12,6 +12,10 @@ This system implements the One-Time Pad cipher, a theoretically unbreakable encr
 - **Decryption Server** (`dec_server`): Multi-threaded server for decrypting ciphertext
 - **Decryption Client** (`dec_client`): Client for sending ciphertext to decryption server
 
+## Platform Requirements
+
+**Linux/Unix Only** - This system uses POSIX system calls (`fork()`, `waitpid()`, POSIX sockets) and is designed for Linux/Unix environments.
+
 ## Quick Start
 
 1. **Compile all components:**

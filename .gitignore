@@ -17,3 +17,6 @@ perf.data
 # Debug/Build directories
 Debug/
 Release/
+
+# VS Code settings
+.vscode/

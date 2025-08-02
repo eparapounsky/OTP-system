@@ -14,7 +14,7 @@ The system consists of five main components:
 - **Decryption Server** (`dec_server`): Multi-threaded server that decrypts ciphertext using OTP.
 - **Decryption Client** (`dec_client`): Connects to decryption server to decrypt ciphertext files.
 
-## Quick Start
+## Usage
 
 1. **Build project:**
 
@@ -26,7 +26,7 @@ chmod +x build.sh
 2. **Generate a key:**
 
 ```bash
-./keygen 1024 > mykey.txt
+./keygen 1024 > key.txt
 ```
 
 3. **Start the servers:**
@@ -39,14 +39,15 @@ chmod +x build.sh
 4. **Encrypt a message:**
 
 ```bash
-echo "HELLO WORLD" > plaintext.txt
-./enc_client plaintext.txt mykey.txt 57170 > ciphertext.txt
+echo "THE EAGLE FLIES AT MIDNIGHT" > message.txt
+./enc_client message.txt key.txt 57170 > ciphertext.txt
 ```
 
 5. **Decrypt the message:**
 
 ```bash
-./dec_client ciphertext.txt mykey.txt 57171
+./dec_client ciphertext.txt key.txt 57171
+# Output: THE EAGLE FLIES AT MIDNIGHT
 ```
 
 ## Security Features
@@ -55,27 +56,3 @@ echo "HELLO WORLD" > plaintext.txt
 - **Key Length Validation**: Ensures keys are at least as long as the message
 - **Character Validation**: Input validation ensures only valid characters are processed
 - **Memory Safety**: Proper memory allocation and cleanup
-
-## Example Usage
-
-```bash
-# 1. Generate a key
-./keygen 256 > secret.key
-
-# 2. Create plaintext
-echo "THE EAGLE FLIES AT MIDNIGHT" > message.txt
-
-# 3. Start servers
-./enc_server 57170 &
-./dec_server 57171 &
-
-# 4. Encrypt
-./enc_client message.txt secret.key 57170 > encrypted.txt
-
-# 5. Decrypt
-./dec_client encrypted.txt secret.key 57171
-# Output: THE EAGLE FLIES AT MIDNIGHT
-
-# 6. Clean up
-rm secret.key message.txt encrypted.txt
-```

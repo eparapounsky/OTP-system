@@ -55,4 +55,3 @@ echo "THE EAGLE FLIES AT MIDNIGHT" > message.txt
 - **Client Validation**: Servers only accept connections from appropriate client types
 - **Key Length Validation**: Ensures keys are at least as long as the message
 - **Character Validation**: Input validation ensures only valid characters are processed
-- **Memory Safety**: Proper memory allocation and cleanup

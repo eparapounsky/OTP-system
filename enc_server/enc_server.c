@@ -44,9 +44,9 @@ void check_client_type(int connection_socket_fd)
 	// receive client type with proper error handling and partial receive handling
 	while (total_bytes_received < expected_bytes)
 	{
-		bytes_received = recv(connection_socket_fd, client_type + total_bytes_received, 
+		bytes_received = recv(connection_socket_fd, client_type + total_bytes_received,
 							  expected_bytes - total_bytes_received, 0);
-		
+
 		if (bytes_received < 0)
 		{
 			fprintf(stderr, "SERVER: ERROR receiving client type\n");
@@ -59,10 +59,10 @@ void check_client_type(int connection_socket_fd)
 			close(connection_socket_fd);
 			_exit(1);
 		}
-		
+
 		total_bytes_received += bytes_received;
 	}
-	
+
 	client_type[7] = '\0'; // ensure null-termination
 
 	// close connection if the client type is not 'encrypt'

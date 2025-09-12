@@ -17,7 +17,6 @@ char *receive_message(int connection_socket_fd);
  * @param socket_address: pointer to sockaddr_in structure
  * @param port_number: int, port number on which the server is listening
  * @param host_name: string, host name of the server to connect to
- * Adapted from Module 8: Creating a socket example code
  */
 void setup_client_address_struct(struct sockaddr_in *socket_address, int port_number, char *host_name)
 {
@@ -42,7 +41,6 @@ void setup_client_address_struct(struct sockaddr_in *socket_address, int port_nu
  * @param file_path: path to the file
  * @param file_size: pointer to an int where the file size will be stored
  * @return file_contents: string containing the file's contents
- * Adapted from Stack Overflow: https://stackoverflow.com/questions/49121638/use-ftell-to-find-the-file-size
  */
 char *read_file(char *file_path, int *file_size)
 {
@@ -89,7 +87,6 @@ char *read_file(char *file_path, int *file_size)
  * @param connection_socket_fd: int, the file descriptor for the connection socket
  * @param message: string, the message to be sent
  * @param message_size: int, the size of the message in bytes
- * Adapted from Stack Overflow: https://stackoverflow.com/questions/57740245/what-is-the-correct-way-to-use-send-on-sockets-when-the-full-message-has-not-b
  */
 void send_message(int connection_socket_fd, char *message, int message_size)
 {
@@ -123,7 +120,6 @@ void send_message(int connection_socket_fd, char *message, int message_size)
  * returns a pointer to the message in memory.
  * @param connection_socket_fd: int, file descriptor of the connection socket
  * @return message: string, the full message
- * Adapted from Stack Overflow: https://stackoverflow.com/questions/66089644/how-does-recv-work-in-socket-programming
  */
 char *receive_message(int connection_socket_fd)
 {
@@ -173,7 +169,6 @@ char *receive_message(int connection_socket_fd)
  * @param argument_count: int, the number of command line arguments
  * @param argument_array: array, the command line arguments entered (1: program name, 2: host name,
  * 3: plaintext file name, 4: key file name, 5: port number)
- * Adapted from Module 8: Client Program example code
  */
 int main(int argument_count, char *argument_array[])
 {

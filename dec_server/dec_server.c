@@ -20,7 +20,6 @@ char *receive_message(int connection_socket_fd);
  * Sets up a server socket address struct.
  * @param socket_address: pointer to sockaddr_in structure
  * @param port_number: int, port number on which the server will listen
- * Adapted from Module 8: Creating a socket example code
  */
 void setup_server_address_struct(struct sockaddr_in *socket_address, int port_number)
 {
@@ -38,7 +37,32 @@ void setup_server_address_struct(struct sockaddr_in *socket_address, int port_nu
 void check_client_type(int connection_socket_fd)
 {
 	char client_type[8];
-	recv(connection_socket_fd, client_type, 7, 0);
+	int bytes_received = 0;
+	int total_bytes_received = 0;
+	int expected_bytes = 7;
+
+	// receive client type with proper error handling and partial receive handling
+	while (total_bytes_received < expected_bytes)
+	{
+		bytes_received = recv(connection_socket_fd, client_type + total_bytes_received, 
+							  expected_bytes - total_bytes_received, 0);
+		
+		if (bytes_received < 0)
+		{
+			fprintf(stderr, "SERVER: ERROR receiving client type\n");
+			close(connection_socket_fd);
+			_exit(1);
+		}
+		else if (bytes_received == 0)
+		{
+			fprintf(stderr, "SERVER: ERROR client disconnected unexpectedly\n");
+			close(connection_socket_fd);
+			_exit(1);
+		}
+		
+		total_bytes_received += bytes_received;
+	}
+	
 	client_type[7] = '\0'; // ensure null-termination
 
 	// close connection if the client type is not 'decrypt'
@@ -167,8 +191,6 @@ void decrypt_ciphertext(char *plaintext, char *encryption_key, char *ciphertext)
  * @param connection_socket_fd: int, the file descriptor for the connection socket
  * @param message: string, the message to be sent
  * @param message_size: int, the size of the message in bytes
- * Adapted from Stack Overflow: https://stackoverflow.com/questions/57740245/what-is-the-correct-way-to-use-send-on-sockets-when-the-full-message-has-not-b
- *
  */
 void send_message(int connection_socket_fd, char *message, int message_size)
 {
@@ -202,7 +224,6 @@ void send_message(int connection_socket_fd, char *message, int message_size)
  * returns a pointer to the message in memory.
  * @param connection_socket_fd: int, file descriptor of the connection socket
  * @return message: string, the full message
- * Adapted from Stack Overflow: https://stackoverflow.com/questions/66089644/how-does-recv-work-in-socket-programming
  */
 char *receive_message(int connection_socket_fd)
 {
@@ -252,7 +273,6 @@ char *receive_message(int connection_socket_fd)
  * @param argument_count: int, the number of command line arguments
  * @param argument_array: array, the command line arguments entered (first is the program name,
  * second is the port number)
- * Adapted from Module 8: Server Program example code
  */
 int main(int argument_count, char *argument_array[])
 {

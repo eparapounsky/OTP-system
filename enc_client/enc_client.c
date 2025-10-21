@@ -76,7 +76,22 @@ char *read_file(char *file_path, int *file_size)
 	{
 		// move pointer forward in file, and only read remaining file
 		size_t bytes_read = fread(file_contents + total_bytes_read, sizeof(char), *file_size - total_bytes_read, file);
-		// error handling?
+
+		// check for read errors or EOF (should not happen here since file size is known, but just in case)
+		if (bytes_read == 0)
+		{
+			if (feof(file))
+			{
+				break; // reached end of file
+			}
+			if (ferror(file))
+			{
+				fclose(file);
+				free(file_contents);
+				fprintf(stderr, "CLIENT: ERROR reading file %s\n", file_path);
+				exit(1);
+			}
+		}
 		total_bytes_read += bytes_read;
 	}
 

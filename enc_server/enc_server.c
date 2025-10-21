@@ -41,7 +41,7 @@ void check_client_type(int connection_socket_fd)
 	int total_bytes_received = 0;
 	int expected_bytes = 7;
 
-	// receive client type with proper error handling and partial receive handling
+	// receive client type with partial receive handling
 	while (total_bytes_received < expected_bytes)
 	{
 		bytes_received = recv(connection_socket_fd, client_type + total_bytes_received,

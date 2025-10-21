@@ -32,7 +32,7 @@ void setup_client_address_struct(struct sockaddr_in *socket_address, int port_nu
 	struct hostent *host_info = gethostbyname(host_name);
 	if (host_info == NULL)
 	{
-		fprintf(stderr, "CLIENT: ERROR, no such host\n");
+		fprintf(stderr, "CLIENT: ERROR- no such host\n");
 		exit(1);
 	}
 
@@ -90,7 +90,7 @@ char *read_file(char *file_path, int *file_size)
 		if (!character_found)
 		{
 			fclose(file);
-			fprintf(stderr, "error: input contains bad characters");
+			fprintf(stderr, "CLIENT: ERROR- input contains bad characters");
 			exit(1);
 		}
 	}
@@ -208,7 +208,7 @@ int main(int argument_count, char *argument_array[])
 	// check that encryption key is at least as long as the plaintext
 	if (encryption_key_size < plaintext_size)
 	{
-		fprintf(stderr, "CLIENT: ERROR, encryption key is too short\n");
+		fprintf(stderr, "CLIENT: ERROR- encryption key is too short\n");
 		free(plaintext);
 		free(encryption_key);
 		exit(1);

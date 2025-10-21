@@ -104,7 +104,6 @@ char *read_file(char *file_path, int *file_size)
  * @param connection_socket_fd: int, the file descriptor for the connection socket
  * @param message: string, the message to be sent
  * @param message_size: int, the size of the message in bytes
- * Adapted from Stack Overflow: https://stackoverflow.com/questions/57740245/what-is-the-correct-way-to-use-send-on-sockets-when-the-full-message-has-not-b
  */
 void send_message(int connection_socket_fd, char *message, int message_size)
 {
@@ -138,7 +137,6 @@ void send_message(int connection_socket_fd, char *message, int message_size)
  * returns a pointer to the message in memory.
  * @param connection_socket_fd: int, file descriptor of the connection socket
  * @return message: string, the full message
- * Adapted from Stack Overflow: https://stackoverflow.com/questions/66089644/how-does-recv-work-in-socket-programming
  */
 char *receive_message(int connection_socket_fd)
 {

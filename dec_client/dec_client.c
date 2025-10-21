@@ -73,7 +73,7 @@ char *read_file(char *file_path, int *file_size)
 		// move pointer forward in file, and only read remaining file
 		size_t bytes_read = fread(file_contents + total_bytes_read, sizeof(char), *file_size - total_bytes_read, file);
 
-		// error handling
+		// check for read errors or EOF when no bytes were read
 		if (bytes_read == 0)
 		{
 			if (feof(file))

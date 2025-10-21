@@ -21,7 +21,6 @@ char *receive_message(int connection_socket_fd);
  * @param socket_address: pointer to sockaddr_in structure
  * @param port_number: int, port number on which the server is listening
  * @param host_name: string, host name of the server to connect to
- * Adapted from Module 8: Creating a socket example code
  */
 void setup_client_address_struct(struct sockaddr_in *socket_address, int port_number, char *host_name)
 {
@@ -46,7 +45,6 @@ void setup_client_address_struct(struct sockaddr_in *socket_address, int port_nu
  * @param file_path: path to the file
  * @param file_size: pointer to an int where the file size will be stored
  * @return file_contents: string containing the file's contents
- * Adapted from Stack Overflow: https://stackoverflow.com/questions/49121638/use-ftell-to-find-the-file-size
  */
 char *read_file(char *file_path, int *file_size)
 {
@@ -190,7 +188,6 @@ char *receive_message(int connection_socket_fd)
  * @param argument_count: int, the number of command line arguments
  * @param argument_array: array, the command line arguments entered (1: program name,
  * 2: plaintext file name, 3: key file name, 4: port number)
- * Adapted from Module 8: Client Program example code
  */
 int main(int argument_count, char *argument_array[])
 {
